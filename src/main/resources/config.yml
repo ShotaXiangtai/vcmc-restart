@@ -1,0 +1,81 @@
+# vcmc-restart 設定ファイル
+# Folia対応自動再起動プラグイン
+
+# 自動再起動を有効にするか
+auto-restart-enabled: true
+
+# 再起動間隔（分単位）。0にすると scheduled-times のみ使用
+# 例: 360 = 6時間ごとに再起動
+restart-interval: 360
+
+# 固定時刻での再起動（日本時間 HH:mm 形式）
+# restart-interval と両方有効な場合、どちらか早い方が優先されます
+scheduled-times:
+  enabled: false
+  times:
+    - "06:00"
+    - "18:00"
+
+# 再起動前のアナウンス設定
+# time: 再起動X秒前にアナウンス
+# message: アナウンスメッセージ（&カラーコード使用可）
+announcements:
+  - time: 3600
+    message: "&c&l[再起動] &fサーバーは &c&l60分後 &fに再起動します。"
+  - time: 1800
+    message: "&c&l[再起動] &fサーバーは &c&l30分後 &fに再起動します。"
+  - time: 900
+    message: "&c&l[再起動] &fサーバーは &c&l15分後 &fに再起動します。"
+  - time: 600
+    message: "&c&l[再起動] &fサーバーは &c&l10分後 &fに再起動します。"
+  - time: 300
+    message: "&c&l[再起動] &fサーバーは &c&l5分後 &fに再起動します。データを保存してください。"
+  - time: 60
+    message: "&c&l[再起動] &fサーバーは &c&l1分後 &fに再起動します！"
+  - time: 30
+    message: "&c&l[再起動] &fサーバーは &c&l30秒後 &fに再起動します！"
+  - time: 10
+    message: "&c&l[再起動] &fサーバーは &c&l10秒後 &fに再起動します！"
+  - time: 5
+    message: "&c&l[再起動] &c&l5秒後..."
+  - time: 4
+    message: "&c&l[再起動] &c&l4秒後..."
+  - time: 3
+    message: "&c&l[再起動] &c&l3秒後..."
+  - time: 2
+    message: "&c&l[再起動] &c&l2秒後..."
+  - time: 1
+    message: "&c&l[再起動] &c&l1秒後..."
+
+# タイトル表示設定（再起動X秒前からタイトルを表示）
+title:
+  enabled: true
+  # 何秒前からタイトル表示するか
+  show-from: 30
+  # タイトルテキスト
+  title: "&c&lサーバー再起動"
+  # サブタイトルテキスト（%time% で残り時間に置換）
+  subtitle: "&f%time% 後に再起動します"
+  # タイトル表示時間（tick）
+  fade-in: 10
+  stay: 70
+  fade-out: 20
+
+# 再起動実行時のキックメッセージ
+kick-message: "&c&lサーバーが再起動中です。しばらくしてから再接続してください。"
+
+# 再起動実行直前のブロードキャストメッセージ
+restart-broadcast: "&c&l[再起動] &fサーバーを再起動しています..."
+
+# /vcrestart コマンドのメッセージ
+messages:
+  no-permission: "&cこのコマンドを実行する権限がありません。"
+  restarting-now: "&c&l[再起動] &f管理者による手動再起動を実行します。"
+  cancelled: "&a&l[再起動] &f再起動をキャンセルしました。"
+  no-restart-scheduled: "&e再起動はスケジュールされていません。"
+  status-scheduled: "&a次の再起動: &f%time% 後 &7(%datetime%)"
+  status-disabled: "&e自動再起動は無効です。"
+  reload-success: "&a設定をリロードしました。"
+  settime-success: "&a%minutes% 分後に再起動をスケジュールしました。"
+  settime-invalid: "&c無効な時間です。正の整数（分）を指定してください。"
+  usage: "&c使用方法: /vcrestart <now|cancel|status|settime <分>|reload>"

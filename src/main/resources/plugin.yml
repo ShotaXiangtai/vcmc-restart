@@ -1,0 +1,22 @@
+name: vcmc-restart
+version: '${project.version}'
+main: com.vcmc.restart.VcmcRestart
+api-version: '26.1'
+folia-supported: true
+description: Folia対応の自動再起動プラグイン
+authors: [ vcmc ]
+
+commands:
+  vcrestart:
+    description: 再起動管理コマンド
+    usage: /vcrestart <now|cancel|status|settime|reload>
+    permission: vcmc.restart.admin
+    aliases: [ vrestart ]
+
+permissions:
+  vcmc.restart.admin:
+    description: 再起動管理コマンドへのアクセス
+    default: op
+  vcmc.restart.notify:
+    description: 再起動アナウンスを受け取る
+    default: true
