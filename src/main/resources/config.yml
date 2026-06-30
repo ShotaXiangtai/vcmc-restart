@@ -5,16 +5,15 @@
 auto-restart-enabled: true
 
 # 再起動間隔（分単位）。0にすると scheduled-times のみ使用
-# 例: 360 = 6時間ごとに再起動
-restart-interval: 360
+# 例: 360 = 6時間ごとに再起動、0 = 無効
+restart-interval: 0
 
-# 固定時刻での再起動（日本時間 HH:mm 形式）
+# OS時刻に基づく固定時刻での再起動（HH:mm 形式）
 # restart-interval と両方有効な場合、どちらか早い方が優先されます
 scheduled-times:
-  enabled: false
+  enabled: true
   times:
-    - "06:00"
-    - "18:00"
+    - "12:00"
 
 # 再起動前のアナウンス設定
 # time: 再起動X秒前にアナウンス
